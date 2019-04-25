@@ -1,4 +1,4 @@
-bento -- the tram problem
+Bento -- the tram problem
 =========================
 
 You live in an imaginary town called "Bento". Bento is served
@@ -19,37 +19,66 @@ Assume:
     * trams are faster than humans
     * humans stop at first stop they encounter
     * humans can't see trams or stops before they reach them
+    * spherical cows
+
+                      _
+                     / \
+                    |   |
+                    |___|
+               *------*----A-*
+               |             |
+               |             |
+               |             |
+               *-B----*----H-*
+                        <- ? ->
+
+In the above, Human H is at a point in the southeast, he lives
+at the north end of town. Trams A & B are moving clockwise.
+Should Human H walk with the traffic or against it?
+
+(Again, he doesn't know where he is in town, nor can he see
+the trams nor the stops.)
 
 -----------------------------------------
 
-to run a simulation, type:
+To run a simulation, type:
 
-    % python bento.py do_sim MY_SEED
-    210.000000   205.000000
+    % python bento.py do_sim MY_SEED 1
 
-This means, do a simulation, using "MY_SEED" to see the random
-number generator. The clockwise run took 210 seconds, the anti-
-clockwise run took 205 seconds.
+    [ snip ]
 
-to run 100 simulatins, type:
+    6480.00000
+
+This means, do a clockwise simulations with "MY_SEED" to seed
+the random number generator. Do "0" for anti-clockwise. Total
+time was 6480 seconds, or about 108 minutes.
+
+    % python bento.py do_sim_both MY_SEED
+    15120.000000   26640.000000
+
+This means, do a simulation for both directions  using "MY_SEED"
+to see the random number generator. The clockwise run took 15,120
+seconds, the anti-clockwise run took 26,640 seconds.
+
+To run 100 simulatins, type:
 
     % python bento.py do_sim_many MY_SEED 100
-    774.80000   1161.60000
+    75942.000000   71439.120000
 
-This means, after 100 simulatins, the average clockwise time
-was 774.8 seconds, the average anti-clockwise time was 1161.6
+This means, after 100 simulations, the average clockwise time
+was 75942 seconds, the average anti-clockwise time was 71439
 seconds.
 
 Edit the code to change the following constants:
 
-    DEFAULT_CONSTANTS = {
-        'num_stops'         : 10,
-        'num_trains'        : 2,
-        'speed_human'       : 5.0,
-        'speed_train'       : 20.0,
-        'loop_length'       : 10,
-    }
+DEFAULT_CONSTANTS = {
+    'loop_length'       : 10 * 1000,
+    'stop_count'        : 5,
+    'train_count'       : 2,
+    'human_speed'       : (5.0 * 1000) / (60 * 60),
+    'train_speed'       : (10.0 * 1000) / (60 * 60),
+}
 
-Distances are in kilometers, speeds are in kilometers an hour
+Distances are in meters, time is in seconds.
 (not that it matters).
 
