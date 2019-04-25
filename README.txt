@@ -24,7 +24,7 @@ Assume:
 
 to run a simulation, type:
 
-	% python bento.py do_sim MY_SEED
+    % python bento.py do_sim MY_SEED
     210.000000   205.000000
 
 This means, do a simulation, using "MY_SEED" to see the random
@@ -33,7 +33,7 @@ clockwise run took 205 seconds.
 
 to run 100 simulatins, type:
 
-	% python bento.py run_many MY_SEED 100
+    % python bento.py do_sim_many MY_SEED 100
     774.80000   1161.60000
 
 This means, after 100 simulatins, the average clockwise time
